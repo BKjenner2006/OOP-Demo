@@ -6,7 +6,7 @@ public class Vehicle : MonoBehaviour
 {
     protected float HorsePower { get; set; }
     private AudioSource HonkSound { get; set; }
-    private Rigidbody vehicleRb;
+    protected Rigidbody vehicleRb { get; set; } //Encapsulation
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class Vehicle : MonoBehaviour
         
     }
 
-    public void MoveForward()
+    virtual public void MoveForward()
     {
         vehicleRb.AddForce(Vector3.forward * HorsePower);
     }

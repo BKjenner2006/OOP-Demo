@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ambulance : Vehicle
+public class Ambulance : Vehicle //Inheritence
 {
     private AudioSource SirenSound { get; set; }
     private bool isEmergency = false;
@@ -24,8 +24,21 @@ public class Ambulance : Vehicle
         SirenSound.Play();
     }
 
-    public void CallInEmergency()
+    public void CallInEmergency() //Abstraction, i guess
     {
         isEmergency = true;
+        PlaySiren();
+    }
+
+    public override void MoveForward() //Polymorphism
+    {
+        if (isEmergency)
+        {
+            vehicleRb.AddForce(Vector3.forward * HorsePower * 2); //add the super boost!
+        }
+        else
+        {
+            base.MoveForward();
+        }
     }
 }
